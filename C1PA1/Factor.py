@@ -82,6 +82,14 @@ def product(factor1: Factor, factor2: Factor) -> Factor:
     return Factor(var, val)
 
 
+def product_n(factors: list) -> Factor:
+    assert len(factors) > 0, 'No factor to compute joint distribution!'
+    joint = factors[0]
+    for factor in factors[1:]:
+        joint = product(joint, factor)
+    return joint
+
+
 def marginalization(factor: Factor, var_list) -> Factor:
     index_remain = []
     index_margin = []
